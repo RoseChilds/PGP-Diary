@@ -4,3 +4,4 @@ diaryconfig
 *.exe
 .idea
 package-lock.json
+lock.ico
