@@ -93,7 +93,7 @@ module.exports = {
             break;
         }
         console.log("Deleting file..".yellow);
-        diary.entries.splice(parseInt(toload)-1);
+        diary.entries.splice(parseInt(toload)-1, 1);
         console.log("Encrypting diary..".yellow);
         const encrypted = await openpgp.encrypt({
             message: await openpgp.createMessage({text: JSON.stringify(diary)}),
