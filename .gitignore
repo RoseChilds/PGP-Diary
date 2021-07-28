@@ -1,0 +1,6 @@
+node_modules
+diary
+diaryconfig
+*.exe
+.idea
+package-lock.json

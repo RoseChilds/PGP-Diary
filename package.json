@@ -1,0 +1,12 @@
+{
+  "name": "pgpdiary",
+  "version": "1.0.0",
+  "description": "A diary that's protected by PGP.",
+  "main": "index.js",
+  "author": "Rose Childs",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "openpgp": "^5.0.0-5"
+  }
+}
