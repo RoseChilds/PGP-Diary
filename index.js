@@ -145,6 +145,7 @@ async function main(){
         }else if(option == "d"){
             await functions.delete(diary, config);
         }
+        console.log("");
         await getanswer("Press [ENTER] to continue..".gray, true);
         console.clear();
     }
