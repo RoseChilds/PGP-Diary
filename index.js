@@ -44,7 +44,6 @@ async function main(){
     var config = JSON.parse(configfile);
     console.log("Config loaded".green);
     var pass = await getanswer("Diary password > ".blue, true);
-    console.log(pass);
     var keypass = pass;
     console.log("");
     console.log("");
