@@ -1,5 +1,5 @@
 {
-  "name": "pgpdiary",
+  "name": "PGP-Diary",
   "version": "1.0.0",
   "description": "A diary that's protected by PGP.",
   "main": "index.js",
