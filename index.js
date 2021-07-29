@@ -133,6 +133,7 @@ async function main(){
                     skip = true;
                     break;
                 case "e":
+                    await getanswer("Press [ENTER] to continue..".gray, true, true);
                     process.exit(0);
                     break;
                 default:
