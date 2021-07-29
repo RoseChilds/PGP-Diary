@@ -17,7 +17,7 @@ async function main(){
     }
     if(!configexists){
         console.log("Config not found, generating now..".yellow);
-        let newpass = await getanswer("Password you want to use > ".blue, true);
+        let newpass = await getanswer("Password you want to use > ".blue, true, true);
         console.log("");
         console.log("Generating keys..".yellow);
         const { privateKey, publicKey } = await openpgp.generateKey({
@@ -43,7 +43,7 @@ async function main(){
     const configfile = await fs.readFile('diaryconfig', 'utf8');
     var config = JSON.parse(configfile);
     console.log("Config loaded".green);
-    var pass = await getanswer("Diary password > ".blue, true);
+    var pass = await getanswer("Diary password > ".blue, true, true);
     var keypass = pass;
     console.log("");
     console.log("");
@@ -73,6 +73,7 @@ async function main(){
     const publicKey = await openpgp.readKey({ armoredKey:config.public});
     config.publicKey = publicKey;
     config.privateKey = privateKey;
+    config.password = pass;
     var exists = true;
     try{
         await fs.access('diary');
@@ -82,7 +83,11 @@ async function main(){
     if(!exists){
         console.log("Diary doesn't exist, creating..".yellow);
         const diary = {
-            entries: []
+            entries: [{
+                time: new Date().getTime(),
+                content: `Hey! Thanks for using PGP-Diary! I hope you enjoy using my little project.\nWanna see more from me? Check out my GitHub at https://github.com/RoseChilds, or add me on Discord at rosee#0001!`,
+                title: `Message from Rose`
+            }]
         };
         const encrypted = await openpgp.encrypt({
             message: await openpgp.createMessage({ text: JSON.stringify(diary) }),
@@ -115,6 +120,7 @@ async function main(){
         console.log("  [R]ead".magenta);
         console.log("  [W]rite".magenta);
         console.log("  [D]elete".magenta);
+        console.log("  [C]hange password".magenta);
         console.log("  [E]xit".magenta);
         while (true) {
             var option = await getanswer("Choose mode > ".blue);
@@ -123,6 +129,7 @@ async function main(){
                 case "r":
                 case "w":
                 case "d":
+                case "c":
                     skip = true;
                     break;
                 case "e":
@@ -144,6 +151,12 @@ async function main(){
             await functions.read(diary, config);
         }else if(option == "d"){
             await functions.delete(diary, config);
+        }else if(option == "c"){
+            var newconfig = await functions.changepassword(diary, config);
+            if(newconfig){
+                config = newconfig;
+            }
+
         }
         console.log("");
         await getanswer("Press [ENTER] to continue..".gray, true);
