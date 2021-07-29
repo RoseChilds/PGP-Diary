@@ -117,7 +117,7 @@ async function main(){
     console.log("");
     while(true){
         console.log("Modes".magenta);
-        console.log("  [R]ead".magenta);
+        console.log(`  [R]ead (${diary.entries.length.toLocaleString()} entr${diary.entries.length==1 ? 'y' : 'ies'})`.magenta);
         console.log("  [W]rite".magenta);
         console.log("  [D]elete".magenta);
         console.log("  [C]hange password".magenta);
