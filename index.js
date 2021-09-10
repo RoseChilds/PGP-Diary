@@ -85,7 +85,7 @@ async function main(){
         const diary = {
             entries: [{
                 time: new Date().getTime(),
-                content: `Hey! Thanks for using PGP-Diary! I hope you enjoy using my little project.\nWanna see more from me? Check out my GitHub at https://github.com/RoseChilds, or add me on Discord at rosee#0001!`,
+                content: `Hey! Thanks for using PGP-Diary! I hope you enjoy using my little project.\nWanna see more from me? You can find me at https://rosechilds.gay!`,
                 title: `Message from Rose`
             }]
         };
